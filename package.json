@@ -38,8 +38,7 @@
     "prettier": "^2.0.5"
   },
   "pre-commit": [
-    "pre-commit",
-    "doc"
+    "pre-commit"
   ],
   "lint-staged": {
     "*.js": [

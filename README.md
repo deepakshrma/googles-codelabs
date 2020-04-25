@@ -18,6 +18,8 @@ Duration: 2
 
 Go Lang claat tool replica written in node js, using [marked parser](https://marked.js.org/#/USING_PRO.md#lexer)
 
+Documents: [CodeLabs Docs](https://deepakshrma.github.io/googles-codelabs/)
+
 <!-- ------------------------ -->
 
 ## How to install

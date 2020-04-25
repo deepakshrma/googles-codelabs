@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - lts/*
+branches:
+  only:
+  - master
+git:
+  depth: 3
+  quiet: true
