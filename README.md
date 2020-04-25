@@ -6,7 +6,7 @@ status: Published
 authors: Deepak
 Feedback Link: https://github.com/deepakshrma/googles-codelabs
 
-## How to use nodejs CodeLabs
+## How to use nodejs CodeLabs [![Build Status](https://travis-ci.org/deepakshrma/googles-codelabs.svg?branch=master)](https://travis-ci.org/deepakshrma/googles-codelabs)
 
 <!-- ------------------------ -->
 
