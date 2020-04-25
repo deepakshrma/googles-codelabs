@@ -4,7 +4,7 @@
     "node-claat": "bin/index.js",
     "codelabs": "bin/index.js"
   },
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Go Lang claat tool replica in node js",
   "main": "lib/index.js",
   "directories": {
@@ -12,7 +12,10 @@
     "lib": "lib"
   },
   "scripts": {
+    "serve": "open http://localhost:8080/ && http-server",
     "build": "node bin",
+    "doc": "rm -r docs/* && cp README.md docs/_.md && node bin && cp public/_/* docs/",
+    "example": "node bin --docs examples",
     "pre-commit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +28,7 @@
     "progress-estimator": "^0.2.2"
   },
   "devDependencies": {
+    "http-server": "^0.12.1",
     "lint-staged": "^10.1.7",
     "pre-commit": "^1.2.2",
     "prettier": "^2.0.5"
@@ -34,8 +38,7 @@
   ],
   "lint-staged": {
     "*.js": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "repository": {

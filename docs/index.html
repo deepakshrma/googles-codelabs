@@ -1,66 +1,82 @@
-
-      <!doctype html>
-      <html>
-      <head>
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-        <meta name="theme-color" content="#4F7DC9">
-        <meta charset="UTF-8">
-        <title>How to use nodejs CodeLabs</title>
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
-        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
-        <style>
-          .success {
-            color: #1e8e3e;
-          }
-          .error {
-            color: red;
-          }
-        </style>
-      </head>
-      <body>
-        <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-        <google-codelab environment="web"
-			format="html"
-			prefix="/"
-			updated="2020-04-25T05:47:50.411Z"
-			duration="0"
-			title="How to use nodejs CodeLabs"
-			authors="Deepak"
-			summary="How to use nodejs CodeLabs"
-			source=""
-			theme=""
-			status="Published"
-			category="nodejs"
-			tags="medium"
-			feedback=""
-			id="readme"
-			feedback-link="https://github.com/deepakshrma/googles-codelabs"
-			url="readme" >
-            		<google-codelab-step label="Overview" duration="1">		<h3 id="what-is-nodejs-codelabs">What is nodejs CodeLabs</h3>
-<p>Go Lang claat tool replica written in node js, using <a href="https://marked.js.org/#/USING_PRO.md#lexer">marked parser</a></p>
-		</google-codelab-step>
-		<google-codelab-step label="How to install" duration="1">		<p>You can either install as CLI or nodejs module</p>
-<blockquote>
-<p>Install as CLI</p>
-</blockquote>
-<pre><code class="language-bash">npm install -g @deepakvishwakarma/node-claat
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta name="theme-color" content="#4F7DC9" />
+    <meta charset="UTF-8" />
+    <title>How to use nodejs CodeLabs</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono"
+    />
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/codelab-elements/codelab-elements.css"
+    />
+    <style>
+      .success {
+        color: #1e8e3e;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+    <google-codelab
+      environment="web"
+      format="html"
+      prefix="/"
+      updated="2020-04-25T07:43:14.572Z"
+      duration="0"
+      title="How to use nodejs CodeLabs"
+      authors="Deepak"
+      summary="How to use nodejs CodeLabs"
+      source=""
+      theme=""
+      status="Published"
+      category="nodejs"
+      tags="medium"
+      feedback=""
+      id="_"
+      feedback-link="https://github.com/deepakshrma/googles-codelabs"
+      url="_"
+    >
+      <google-codelab-step label="Overview" duration="2">
+        <h3 id="what-is-nodejs-codelabs">
+          What is nodejs
+          <a href="https://github.com/deepakshrma/googles-codelabs">CodeLabs</a>
+        </h3>
+        <p>
+          Go Lang claat tool replica written in node js, using
+          <a href="https://marked.js.org/#/USING_PRO.md#lexer">marked parser</a>
+        </p>
+      </google-codelab-step>
+      <google-codelab-step label="How to install" duration="2">
+        <p>You can either install as CLI or nodejs module</p>
+        <p><em>Install as CLI</em></p>
+        <pre><code class="language-bash">npm install -g @deepakvishwakarma/node-claat
 
 ##OR
 
 npm install -g git+ssh://git@github.com/deepakshrma/googles-codelabs.git</code></pre>
-		</google-codelab-step>
-		<google-codelab-step label="How to create codelab docs" duration="2">		<blockquote>
-<p>Create a folder[docs]</p>
-</blockquote>
-<pre><code class="language-bash">md codelabs
+      </google-codelab-step>
+      <google-codelab-step label="How to create codelab docs" duration="5">
+        <p><em>Create a folder[docs]</em></p>
+        <pre><code class="language-bash">md codelabs
 cd codelabs
 md docs
 cd docs</code></pre>
-<blockquote>
-<p>Create a md file</p>
-</blockquote>
-<pre><code class="language-bash">echo &#39;summary: This is going to be Awesome
+        <p><em>Create a md file</em></p>
+        <pre><code class="language-bash">echo &#39;summary: This is going to be Awesome
 id: this-going-to-be-awesome
 category: doc
 tags: medium
@@ -86,30 +102,41 @@ function isPageBreak(token) {
   );
 }
 ```&#39; &gt; this-is-going-to-be-awesome.md</code></pre>
-<blockquote>
-<p>Run commandline</p>
-</blockquote>
-<pre><code class="language-bash">cd .. # move to home folder codelabs
+        <p><em>Run commandline</em></p>
+        <pre><code class="language-bash">cd .. # move to home folder codelabs
 ls # you will see docs folder here
 node-claat --docs docs</code></pre>
-		</google-codelab-step>
-		<google-codelab-step label="Thanks For using" duration="1">		<blockquote>
-<p>Now you can run and see output using any static server</p>
-</blockquote>
-<pre><code class="language-bash">http-server</code></pre>
-<blockquote>
-<p>open browser:</p>
-</blockquote>
-<pre><code>open http://localhost:8080/this-is-going-to-be-awesome/#0</code></pre><p>Thanks you for using! Work is still in progress. Keep supporting</p>
-		</google-codelab-step>
-        </google-codelab>
-      
-        <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
-        <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
-        <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
-        <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
-        <script src="//support.google.com/inapp/api.js"></script>
-      
-      </body>
-      </html>
-      
+      </google-codelab-step>
+      <google-codelab-step label="How to contribute" duration="10">
+        <p><em>[prerequisite]</em></p>
+        <ul>
+          <li>NodeJS 12.16.2 LTS or above</li>
+          <li>Basic knowledge of nodejs</li>
+          <li>ES2015 and above</li>
+        </ul>
+        <pre><code class="language-bash">git clone https://github.com/deepakshrma/googles-codelabs.git
+npm install
+
+npm run example
+npm run serve</code></pre>
+      </google-codelab-step>
+      <google-codelab-step label="Thanks For using" duration="1">
+        <p><em>Now you can run and see output using any static server</em></p>
+        <pre><code class="language-bash">http-server</code></pre>
+        <p><em>open browser:</em></p>
+        <pre><code>open http://localhost:8080/this-is-going-to-be-awesome/#0</code></pre>
+        <p>Thanks you for using! Work is still in progress. Keep supporting!</p>
+        <p>
+          <em>For more visit:</em>
+          <a href="https://github.com/deepakshrma/googles-codelabs">CodeLabs</a>
+        </p>
+      </google-codelab-step>
+    </google-codelab>
+
+    <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+    <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+    <script src="//support.google.com/inapp/api.js"></script>
+  </body>
+</html>

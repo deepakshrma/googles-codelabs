@@ -2,26 +2,18 @@
   "environment": "web",
   "format": "html",
   "prefix": "/",
-  "updated": "2020-04-25T05:47:50.411Z",
+  "updated": "2020-04-25T07:43:14.572Z",
   "duration": 0,
   "title": "How to use nodejs CodeLabs",
-  "authors": [
-    "Deepak"
-  ],
+  "authors": ["Deepak"],
   "summary": "How to use nodejs CodeLabs",
   "source": "",
   "theme": "",
-  "status": [
-    "Published"
-  ],
-  "category": [
-    "nodejs"
-  ],
-  "tags": [
-    "medium"
-  ],
+  "status": ["Published"],
+  "category": ["nodejs"],
+  "tags": ["medium"],
   "feedback": "",
-  "id": "readme",
+  "id": "_",
   "feedback-link": "https://github.com/deepakshrma/googles-codelabs",
-  "url": "readme"
+  "url": "_"
 }
