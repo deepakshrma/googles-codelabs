@@ -4,14 +4,17 @@ const { promisify } = require("util");
 
 const { readdir, readFile, writeFile } = require("fs");
 
-function isPageBreak(token) {
+const cwd = process.cwd();
+const fromRoot = (...p) => path.join(cwd, ...p);
+
+const isPageBreak = (token) => {
   return (
     token.type == "html" &&
     token.raw.indexOf("<!--") === 0 &&
     token.raw.includes("-->")
   );
-}
-exports.isPageBreak = isPageBreak;
+};
+
 const buildSlug = (slugTxt) => {
   let meta = {
     environment: "web",
@@ -31,9 +34,9 @@ const buildSlug = (slugTxt) => {
   };
 
   return slugTxt.split("\n").reduce((m, line) => {
-    let [key, value] = line.split(": ", 2);
+    let [key, value] = line.trim().split(/:\s+/, 2);
     key = key.toLowerCase().replace(/\s+/, "-");
-    value = value.trim();
+    value = value;
     if (["status", "category", "tags", "authors"].indexOf(key) !== -1) {
       m[key] = value.split(",");
     } else {
@@ -42,16 +45,6 @@ const buildSlug = (slugTxt) => {
     return m;
   }, meta);
 };
-exports.buildSlug = buildSlug;
-
-const cwd = process.cwd();
-const fromRoot = (...p) => path.join(cwd, ...p);
-
-exports.fromRoot = fromRoot;
-
-exports.rd = promisify(readdir);
-exports.rf = promisify(readFile);
-exports.wf = promisify(writeFile);
 
 // OVERRIDE GLOBAL PROMISE
 Promise.prototype.map = function (cb) {
@@ -60,6 +53,7 @@ Promise.prototype.map = function (cb) {
 
 const pageTemplate = (codelabInfo, pages) => {
   const meta = Object.entries(codelabInfo)
+    .sort(([k1], [k2]) => k1.localeCompare(k2))
     .map(([key, value]) => key + '="' + value + '"')
     .join("\n\t\t\t");
   const html = pages
@@ -105,7 +99,6 @@ const pageTemplate = (codelabInfo, pages) => {
       `;
   return t;
 };
-exports.pageTemplate = pageTemplate;
 
 const parsePage = (buck = []) => {
   let label = "";
@@ -123,18 +116,25 @@ const parsePage = (buck = []) => {
     html: marked.parser(buck),
   };
 };
-exports.parsePage = parsePage;
 
 const parseHeader = (buck = [], codelabInfo = {}) => {
-  buck.forEach(({ type, text }) => {
-    if (type === "heading") {
-      codelabInfo.title = text;
-    }
-  });
+  buck.some(
+    ({ type, text }) => type === "heading" && (codelabInfo.title = text)
+  );
+  return codelabInfo;
 };
-exports.parseHeader = parseHeader;
-const delay = (ms = 300) =>
-  new Promise((r) => {
-    setInterval(r, ms);
-  });
-exports.delay = delay;
+
+const delay = (ms = 300) => new Promise((r) => setInterval(r, ms));
+
+module.exports = {
+  buildSlug,
+  delay,
+  fromRoot,
+  isPageBreak,
+  parseHeader,
+  parsePage,
+  pageTemplate,
+  rd: promisify(readdir),
+  rf: promisify(readFile),
+  wf: promisify(writeFile),
+};

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const path = require("path");
 const { existsSync, mkdirSync } = require("fs");
-const { fromRoot, rd, rf, wf, pageTemplate, delay } = require("../lib/util");
-const { run } = require("../lib");
+const { fromRoot, rd, rf, wf, pageTemplate, delay } = require("../src/util");
+const { run } = require("../src");
 const createLogger = require("progress-estimator");
 const logger = createLogger();
 

@@ -96,7 +96,7 @@ node-claat --docs docs
 
 Duration: 10
 
-_[prerequisite]_
+_Prerequisite:_
 
 - NodeJS 12.16.2 LTS or above
 - Basic knowledge of nodejs
@@ -108,6 +108,18 @@ npm install
 
 npm run example
 npm run serve
+```
+
+_Write Test case and run:_
+
+Write test cases in test folder
+
+```bash
+npm run test:watch
+
+## OR coverage
+
+npm run test
 ```
 
 <!-- ------------------------ -->
