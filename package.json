@@ -1,25 +1,28 @@
 {
-  "name": "node-claat",
+  "name": "@deepakvishwakarma/node-claat",
   "bin": {
     "node-claat": "bin/index.js",
     "codelabs": "bin/index.js"
   },
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "Go Lang claat tool replica in node js",
   "main": "lib/index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
-    "build": "node lib",
+    "build": "node bin",
     "pre-commit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "deepakshrma <deepak.m.shrma@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "marked": "^1.0.0"
+    "marked": "^1.0.0",
+    "minimist": "^1.2.5",
+    "progress-estimator": "^0.2.2"
   },
   "devDependencies": {
     "lint-staged": "^10.1.7",
@@ -34,5 +37,13 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepakshrma/googles-codelabs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deepakshrma/googles-codelabs/issues"
+  },
+  "homepage": "https://github.com/deepakshrma/googles-codelabs#readme"
 }
