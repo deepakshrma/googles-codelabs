@@ -3,6 +3,8 @@ const path = require("path");
 const { promisify } = require("util");
 
 const { readdir, readFile, writeFile } = require("fs");
+const Slugger = require("marked/src/Slugger");
+const slugger = new Slugger();
 
 const cwd = process.cwd();
 const fromRoot = (...p) => path.join(cwd, ...p);
@@ -14,7 +16,8 @@ const isPageBreak = (token) => {
     token.raw.includes("-->")
   );
 };
-
+const keyReg = /:\s+/;
+const commaSeparatedValues = ["status", "category", "tags", "authors"];
 const buildSlug = (slugTxt) => {
   let meta = {
     environment: "web",
@@ -34,14 +37,12 @@ const buildSlug = (slugTxt) => {
   };
 
   return slugTxt.split("\n").reduce((m, line) => {
-    let [key, value] = line.trim().split(/:\s+/, 2);
+    let [key, value = ""] = line.trim().split(keyReg, 2);
     key = key.toLowerCase().replace(/\s+/, "-");
-    value = value;
-    if (["status", "category", "tags", "authors"].indexOf(key) !== -1) {
+    if (value && commaSeparatedValues.indexOf(key) !== -1) {
       m[key] = value.split(",");
-    } else {
-      m[key] = value;
     }
+    m[key] = value;
     return m;
   }, meta);
 };
@@ -58,8 +59,8 @@ const pageTemplate = (codelabInfo, pages) => {
     .join("\n\t\t\t");
   const html = pages
     .map(
-      ({ label, duration, html }) =>
-        `\t\t<google-codelab-step label="${label}" duration="${duration}">\t\t${html}\t\t</google-codelab-step>`
+      ({ label = "", duration = 0, html }) =>
+        `\t\t<google-codelab-step label="${label}" duration="${duration}">\t${html}\t</google-codelab-step>`
     )
     .join("\n");
   const t = `
@@ -84,16 +85,12 @@ const pageTemplate = (codelabInfo, pages) => {
       </head>
       <body>
         <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
-        <google-codelab ${meta} >
-            ${html}
-        </google-codelab>
-      
+        <google-codelab ${meta} >${html}</google-codelab>
         <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
         <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
         <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
         <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
         <script src="//support.google.com/inapp/api.js"></script>
-      
       </body>
       </html>
       `;
@@ -107,7 +104,7 @@ const parsePage = (buck = []) => {
     label = buck.shift().text;
     if (buck[0].raw.toLowerCase().includes("duration:")) {
       const token = buck.shift();
-      duration = Number(token.raw.split(": ")[1].trim());
+      duration = Number(token.raw.split(keyReg)[1].trim());
     }
   }
   return {
@@ -125,6 +122,7 @@ const parseHeader = (buck = [], codelabInfo = {}) => {
 };
 
 const delay = (ms = 300) => new Promise((r) => setInterval(r, ms));
+const slug = (name) => slugger.slug(name);
 
 module.exports = {
   buildSlug,
@@ -134,6 +132,7 @@ module.exports = {
   parseHeader,
   parsePage,
   pageTemplate,
+  slug,
   rd: promisify(readdir),
   rf: promisify(readFile),
   wf: promisify(writeFile),

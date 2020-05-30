@@ -7,6 +7,7 @@
   "version": "0.1.1",
   "description": "Go Lang claat tool replica in node js",
   "main": "src/index.js",
+  "engines" : { "node" : ">=12.10.0" },
   "directories": {
     "doc": "docs",
     "example": "examples",
@@ -23,7 +24,7 @@
   },
   "keywords": [],
   "author": "deepakshrma <deepak.m.shrma@gmail.com>",
-  "license": "ISC",
+  "license": "(ISC OR GPL-3.0)",
   "dependencies": {
     "marked": "^1.0.0",
     "minimist": "^1.2.5",

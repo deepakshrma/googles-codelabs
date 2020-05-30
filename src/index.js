@@ -1,7 +1,5 @@
 const { Worker } = require("worker_threads");
 
-const createLogger = require("progress-estimator");
-const logger = createLogger();
 const isSilent = process.argv.indexOf("-k") !== -1;
 
 async function run(textFiles = []) {
