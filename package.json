@@ -4,10 +4,12 @@
     "node-claat": "bin/index.js",
     "codelabs": "bin/index.js"
   },
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Go Lang claat tool replica in node js",
   "main": "src/index.js",
-  "engines" : { "node" : ">=12.10.0" },
+  "engines": {
+    "node": ">=12.10.0"
+  },
   "directories": {
     "doc": "docs",
     "example": "examples",
